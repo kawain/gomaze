@@ -16,6 +16,10 @@ type worker struct {
 	stack    [][]int
 }
 
+func init() {
+	rand.Seed(time.Now().UnixNano())
+}
+
 func new(num int, maze mazeType) *worker {
 	var row, col int
 	// 候補の数字配列作成
@@ -28,7 +32,6 @@ func new(num int, maze mazeType) *worker {
 	// 候補配列の長さ
 	l := len(tmp)
 	// ランダムで奇数ポイントを作成
-	rand.Seed(time.Now().UnixNano())
 	row = tmp[rand.Intn(l)]
 	col = tmp[rand.Intn(l)]
 
